@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 Canvas</title>
+    <style>
+      canvas {
+        border: #000000 1px solid;
+        background-color: #f4f4f4;
+      }
+    </style>
+    <script>
+    var c, ctx;
+      function init (){
+        c = document.getElementById('myCanvas');
+        ctx = c.getContext('2d');
+        draw();
+      }
+
+      function draw(){
+        //draw red square
+        ctx.fillStyle='purple';
+        ctx.fillRect(30, 30, 50, 50);
+        ctx.strokeStyle='black';
+        ctx.lineWidth='3';
+        ctx.strokeRect(30, 30, 50, 50);
+
+        //draw gree  square
+        ctx.fillStyle='green';
+        ctx.fillRect(40, 45, 50, 50);
+
+        //draw text
+        ctx.font = "30pt Arial";
+        //Create Gradient
+        var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+        gradient.addColorStop("0", "purple");
+        gradient.addColorStop("1", 'green');
+        //fill text with gradient
+        ctx.fillStyle = gradient;
+        ctx.fillText("Brielle Genna", 100, 80);
+
+        //define line
+        ctx.strokeStyle = '#df51ef';
+        ctx.fillStyle = 'blue';
+        ctx.lineWidth = 2;
+
+        ctx.beginPath();
+        ctx.moveTo(90, 90);
+        ctx.lineTo(350, 90);
+        ctx.stroke();
+        ctx.closePath();
+      }
+    </script>
+  </head>
+  <body onLoad="init()">
+    <canvas id="myCanvas" width="400" height="150">
+    <p>Sorry, your browser doesn't support the canvas feature</p>
+    </canvas>
+  </body>
+</html>
